@@ -17,7 +17,7 @@ public class PostCacheService {
 
     @Scheduled(cron = "* * * * * *") // 1초마다 아래 메소드 실행
     public void updateFirstPostPage() {
-        postRepository.findAll(
+        firstPostPage = postRepository.findAll(
                 PageRequest.of(0, 20, Sort.by("id").descending())
         );
     }
